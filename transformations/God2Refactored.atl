@@ -1,0 +1,45 @@
+-- @nsURI MM=http://www.eclipse.org/MoDisco/kdm/code
+-- @path MM=/God2Normal/metamodels/KDM.ecore
+-- @atlcompiler emftvm
+
+module God2Refactored;
+create OUT: MM refining IN: MM;
+
+rule addClass {
+	from
+		s: MM!Package (
+			s.name = 'model'
+		)
+	to
+		t1: MM!Package (
+			
+			codeElement <- s.codeElement -> including(t2)
+		),
+		t2: MM!ClassUnit (
+			name <- 'NovaClasse1' 
+		)
+}
+
+rule addAttributeAndMethod {
+	from
+		s: MM!ClassUnit (
+			s.name = 'Pessoa'
+		)
+	to
+		t1: MM!ClassUnit (
+			codeElement <- thisModule.GetAttributes(thisModule.
+					getClassUnit('ControllerPessoa'), 'variavelSobreInteresseBD1'),
+					
+			codeElement <- thisModule.GetMethods(thisModule.
+					getClassUnit('ControllerPessoa'), 'cadastrarUmaPessoa')
+		)
+}
+
+helper def: getClassUnit(className: String): MM!ClassUnit =
+	MM!ClassUnit.allInstances() -> any(e | e.name = className);
+
+helper def: GetAttributes(Class: MM!ClassUnit, nome1: String): Sequence(MM!StorableUnit) =
+	Class.codeElement -> select(e | e.name = nome1);
+
+helper def: GetMethods(Class: MM!ClassUnit, nome1: String): Set(MM!MethodUnit) =
+	Class.codeElement -> select(e | e.name = nome1);
