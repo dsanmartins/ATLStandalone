@@ -1671,7 +1671,7 @@
                   </codeElement>
                 </codeElement>
               </codeElement>
-              <codeElement xsi:type="code:ClassUnit" name="#className"/>
+              <codeElement xsi:type="code:ClassUnit" name="NewClass1"/>
             </codeElement>
             <codeElement xsi:type="code:Package" name="view">
               <codeElement xsi:type="code:ClassUnit" name="SystemExampleMVC" isAbstract="false">

@@ -1,8 +1,4 @@
 package br.ufscar.main;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -64,25 +60,37 @@ public class Executor {
 
 
 
-			Path path11 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/God2Refactored.atl");
-			Path path12 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/God2Refactored.asm");
-			Path path13 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/God2Refactored.emftvm");
-			Path path21 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformations/God2Refactored.atl");
-			Files.copy(path11,path21,StandardCopyOption.REPLACE_EXISTING);
-			changeParameter(path21);
-			Path path22 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformations/God2Refactored.asm");
-			Path path23 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformations/God2Refactored.emftvm");
-			Files.copy(path12,path22,StandardCopyOption.REPLACE_EXISTING);
-			Files.copy(path13,path23,StandardCopyOption.REPLACE_EXISTING);
+			Path path11 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/0/God2Refactored.atl");
+			Path path12 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/1/God2Refactored.atl");
+			Files.copy(path11,path12,StandardCopyOption.REPLACE_EXISTING);
+			changeParameter(path12);
+			Thread.sleep(10000);
+			Path path21 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/1/God2Refactored.atl");
+			Path path22 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/1/God2Refactored.asm");
+			Path path23 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/1/God2Refactored.emftvm");
+			
+			Path path31 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformations/God2Refactored.atl");
+			Path path32 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformations/God2Refactored.asm");
+			Path path33 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformations/God2Refactored.emftvm");
+			
+			Files.copy(path21,path31,StandardCopyOption.REPLACE_EXISTING);
+			Files.copy(path22,path32,StandardCopyOption.REPLACE_EXISTING);
+			Files.copy(path23,path33,StandardCopyOption.REPLACE_EXISTING);
 			
 			callTransformation( "./models/xmiInicial.xmi",  "./models/xmiFinal.xmi", "./transformations/", "God2Refactored" );
 
+			Files.delete(path21);
+			Files.delete(path22);
+			Files.delete(path23);
 
 			//Close KDM Model
 			baseXManager.closeDB();
 			dado.close();
 			dado2.close();
 		} catch (BaseXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
