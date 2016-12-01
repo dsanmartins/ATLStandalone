@@ -67,15 +67,15 @@ public class Executor {
 			Path path11 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/God2Refactored.atl");
 			Path path12 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/God2Refactored.asm");
 			Path path13 = Paths.get("/home/dsanmartins/workspace/ATLStandaloneHelper/God2Refactored.emftvm");
-			Path path21 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformation/God2Refactored.atl");
+			Path path21 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformations/God2Refactored.atl");
 			Files.copy(path11,path21,StandardCopyOption.REPLACE_EXISTING);
 			changeParameter(path21);
-			Path path22 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformation/God2Refactored.asm");
-			Path path23 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformation/God2Refactored.emftvm");
+			Path path22 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformations/God2Refactored.asm");
+			Path path23 = Paths.get("/home/dsanmartins/workspace/ATLStandalone/transformations/God2Refactored.emftvm");
 			Files.copy(path12,path22,StandardCopyOption.REPLACE_EXISTING);
 			Files.copy(path13,path23,StandardCopyOption.REPLACE_EXISTING);
 			
-			callTransformation( "./models/xmiInicial.xmi",  "./models/xmiFinal.xmi", "./transformation/", "God2Refactored" );
+			callTransformation( "./models/xmiInicial.xmi",  "./models/xmiFinal.xmi", "./transformations/", "God2Refactored" );
 
 
 			//Close KDM Model
