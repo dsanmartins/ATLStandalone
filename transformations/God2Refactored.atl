@@ -16,7 +16,7 @@ rule addClass {
 			codeElement <- s.codeElement -> including(t2)
 		),
 		t2: MM!ClassUnit (
-			name <- 'NovaClasse1' 
+			name <- '#className' 
 		)
 }
 
